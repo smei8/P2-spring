@@ -1,0 +1,20 @@
+version: '3'
+services:
+  my-postgres:
+    image: postgres
+    ports:
+      - "8888:5432"
+    environment:
+      - POSTGRES_PASSWORD=mysecretpassword
+    volumes:
+      - ./dbscript.sql:/docker-entrypoint-initdb.d/create_tables.sql
+  spring-backend-service:
+    image: docker-spring-boot-postgres:latest
+    build: .
+    depends_on:
+      - my-postgres
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/ers
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=Aug211997!
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update

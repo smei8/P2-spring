@@ -18,6 +18,7 @@ import com.ers.expensesys2.service.UserService;
 
 @RestController
 @RequestMapping("api")
+@CrossOrigin
 public class UserController {
 	
 	@Autowired

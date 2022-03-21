@@ -74,7 +74,7 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>ExpenseSys2Application</mainClass>
+							<mainClass>com.ers.expensesys2/ExpenseSys2Application</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

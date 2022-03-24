@@ -15,30 +15,9 @@ public class RequestPojo {
 	
 	public RequestPojo() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
-	public RequestPojo(int userId, int reqType, int reqAmount, int manager) {
-		super();
-		this.userId = userId;
-		this.reqType = reqType;
-		this.reqAmount = reqAmount;
-		this.manager = manager;
-	}
-
-	public RequestPojo(int reqId, int userId, int reqType, int reqAmount, int manager, int reqStatus) {
-		super();
-		this.reqId = reqId;
-		this.userId = userId;
-		this.reqType = reqType;
-		this.reqAmount = reqAmount;
-		this.manager = manager;
-		this.reqStatus = reqStatus;
-	}
-
-	
-	public RequestPojo(int reqId, int userId, int reqType, int reqAmount, Date submitDate, int manager,
-			int reqStatus) {
+	public RequestPojo(int reqId, int userId, int reqType, int reqAmount, Date submitDate, int manager, int reqStatus) {
 		super();
 		this.reqId = reqId;
 		this.userId = userId;
@@ -70,11 +49,11 @@ public class RequestPojo {
 		this.reqId = reqId;
 	}
 
-	public int getuserId() {
+	public int getUserId() {
 		return userId;
 	}
 
-	public void setuserId(int userId) {
+	public void setUserId(int userId) {
 		this.userId = userId;
 	}
 
@@ -102,11 +81,11 @@ public class RequestPojo {
 		this.submitDate = submitDate;
 	}
 
-	public Date getapprovedDate() {
+	public Date getApprovedDate() {
 		return approvedDate;
 	}
 
-	public void setapprovedDate(Date approvedDate) {
+	public void setApprovedDate(Date approvedDate) {
 		this.approvedDate = approvedDate;
 	}
 
@@ -128,8 +107,10 @@ public class RequestPojo {
 
 	@Override
 	public String toString() {
-		return "RequestPojo [reqId=" + reqId + ", userId=" + userId + ", reqType=" + reqType + ", reqAmount=" + reqAmount
-				+ ", submitDate=" + submitDate + ", approvedDate=" + approvedDate + ", manager=" + manager
+		return "RequestPojo [reqId=" + reqId + ", userId=" + userId + ", reqType=" + reqType + ", reqAmount="
+				+ reqAmount + ", submitDate=" + submitDate + ", approvedDate=" + approvedDate + ", manager=" + manager
 				+ ", reqStatus=" + reqStatus + "]";
 	}
+
+
 }

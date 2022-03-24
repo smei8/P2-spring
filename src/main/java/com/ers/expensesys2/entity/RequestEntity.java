@@ -2,25 +2,33 @@ package com.ers.expensesys2.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 @Entity
 @Table(name="request_details")
+@EntityListeners(AuditingEntityListener.class)
 public class RequestEntity {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="req_id")
+//	@OneToOne(mappedBy="request_details", cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	private int reqId;
 	
 	@Column(name="user_id", nullable=false)
@@ -33,11 +41,13 @@ public class RequestEntity {
 	private int reqAmount;
 
 	@Column(name="submit_date")
-	@CreationTimestamp
+	@CreatedDate
+	//@Temporal(TemporalType.DATE)
 	private Date submitDate;
 
-	@Temporal(TemporalType.DATE)
+	//@Temporal(TemporalType.DATE)
 	@Column(name="approve_date")
+	@LastModifiedDate
 	private Date approvedDate;
 	
 	@Column(name="manager")
@@ -145,5 +155,6 @@ public class RequestEntity {
 				+ reqAmount + ", submitDate=" + submitDate + ", approvedDate=" + approvedDate + ", manager=" + manager
 				+ ", reqStatus=" + reqStatus + "]";
 	}
-	
+
+
 }

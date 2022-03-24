@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -49,12 +51,13 @@ public class RequestServiceImpl implements RequestService {
 	public RequestPojo addRequest(RequestPojo requestPojo) throws SystemException {
 		RequestEntity requestEntity = new RequestEntity(
 				requestPojo.getReqId(), 
-				requestPojo.getuserId(),
+				requestPojo.getUserId(),
 				requestPojo.getReqType(), 
 				requestPojo.getReqAmount(),
 				requestPojo.getSubmitDate(),
 				requestPojo.getManager(),
 				requestPojo.getReqStatus());
+		requestEntity.setReqStatus(1);
 		
 		requestDao.saveAndFlush(requestEntity);
 		requestPojo = new RequestPojo(
@@ -62,6 +65,7 @@ public class RequestServiceImpl implements RequestService {
 				requestEntity.getUserId(), 
 				requestEntity.getReqType(),
 				requestEntity.getReqAmount(), 
+				requestPojo.getSubmitDate(),
 				requestEntity.getManager(),
 				requestEntity.getReqStatus());
 		return requestPojo;
@@ -88,6 +92,7 @@ public class RequestServiceImpl implements RequestService {
 	}
 
 	@Override
+	//@Transactional
 	public RequestPojo reviewRequest(RequestPojo requestPojo) throws SystemException {
 		
 		Optional<RequestEntity> optional = requestDao.findById(requestPojo.getReqId());
@@ -98,6 +103,7 @@ public class RequestServiceImpl implements RequestService {
 			requestEntity = optional.get();
 			requestEntity.setReqStatus(requestPojo.getReqStatus());
 			requestEntity = requestDao.save(requestEntity);
+			
 			requsetPojo = new RequestPojo(
 					requestEntity.getReqId(), 
 					requestEntity.getUserId(),

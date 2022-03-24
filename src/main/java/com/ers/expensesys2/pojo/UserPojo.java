@@ -8,7 +8,7 @@ public class UserPojo {
 	private String fullName;
 	private String email;
 	private int role_id;
-	private String role;
+//	private String role;
 	
 	public UserPojo() {
 		super();
@@ -72,19 +72,19 @@ public class UserPojo {
 	public void setRole_id(int role_id) {
 		this.role_id = role_id;
 	}
-
-	public String getRole() {
-		return role;
-	}
-
-	public void setRole(String role) {
-		this.role = role;
-	}
+//
+//	public String getRole() {
+//		return role;
+//	}
+//
+//	public void setRole(String role) {
+//		this.role = role;
+//	}
 
 	@Override
 	public String toString() {
 		return "UserPojo [userID=" + userID + ", username=" + username + ", fullName=" + fullName + ", email=" + email
-				+ ", role_id=" + role_id + ", role=" + role + "]";
+				+ ", role_id=" + role_id + ", role=" + "]";
 	}
 
 }
